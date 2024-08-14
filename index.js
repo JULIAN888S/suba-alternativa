@@ -19,6 +19,19 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("DOMContentLoaded", function() {
   const scheduleElement = document.getElementById('schedule');
   const currentProgramInfoElement = document.getElementById('current-program-info');
+  const imageElement = document.querySelector('.audio-player__image img');
+
+  const presenterImages = {
+    "Wilson Castiblanco García": "./assets/img/wilson_castiblanco.png",
+    "Raúl Benítez Ortega": "./assets/img/locutor1.png",
+    "Programa de la Nueva Eps": "./assets/img/locutor2.png",
+    "José Ruiz": "./assets/img/locutor3.png",
+    "Aura Nelly Díaz": "./assets/img/locutor1.png",
+    "Edison Tumay": "./assets/img/locutor2.png",
+    "Sherman Beltrán": "./assets/img/locutor3.png",
+    "Dr. Jorge Arámbula": "./assets/img/locutor1.png",
+    "default": "./assets/img/logoemisora.png" // Default image for no program or unknown presenter
+  };
 
   const schedule = [
       { name: "El Despertador", presenter: "Wilson Castiblanco García", days: [1, 2, 3, 4, 5], start: "04:00", end: "06:00" },
@@ -41,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentProgram = "No hay programas en este momento.";
   let nextProgram = "No hay programas a continuación.";
   let nextNextProgram = "No hay programas después.";
+  let currentPresenter = "default";
 
   const filteredSchedule = schedule.filter(program => program.days.includes(currentDay));
 
@@ -55,17 +69,21 @@ document.addEventListener("DOMContentLoaded", function() {
           currentProgram = `Estamos presentando: ${program.name} con: ${program.presenter} (${program.start} - ${program.end})`;
           nextProgram = filteredSchedule[i + 1] ? `A continuación: ${filteredSchedule[i + 1].name} (${filteredSchedule[i + 1].start} - ${filteredSchedule[i + 1].end})` : "No hay programas a continuación.";
           nextNextProgram = filteredSchedule[i + 2] ? `Después: ${filteredSchedule[i + 2].name} (${filteredSchedule[i + 2].start} - ${filteredSchedule[i + 2].end})` : "No hay programas después.";
+          currentPresenter = program.presenter;
           break;
       } else if (currentTime < startTime) {
           currentProgram = "No hay programas en este momento.";
           nextProgram = `A continuación: ${program.name} (${program.start} - ${program.end})`;
           nextNextProgram = filteredSchedule[i + 1] ? `Después: ${filteredSchedule[i + 1].name} (${filteredSchedule[i + 1].start} - ${filteredSchedule[i + 1].end})` : "No hay programas después.";
+          currentPresenter = "default";
           break;
       }
   }
 
   currentProgramInfoElement.innerHTML = `<p>${currentProgram}</p>`;
   scheduleElement.innerHTML = `<p>${nextProgram}</p><p>${nextNextProgram}</p>`;
+
+  imageElement.src = presenterImages[currentPresenter] || presenterImages["default"];
 });
 
 
