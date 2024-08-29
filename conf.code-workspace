@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../conf"
+		},
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../logs"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "app"
+	}
+}

@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
     "Raúl Benítez Ortega": "./assets/img/locutor1.png",
     "Programa de la Nueva Eps": "./assets/img/locutor2.png",
     "José Ruiz": "./assets/img/locutor3.png",
-    "Aura Nelly Díaz": "./assets/img/locutor1.png",
+    "Aura Nelly Díaz": "./assets/img/locutor2.png",
     "Edison Tumay": "./assets/img/locutor2.png",
     "Sherman Beltrán": "./assets/img/locutor3.png",
     "Dr. Jorge Arámbula": "./assets/img/locutor1.png",
